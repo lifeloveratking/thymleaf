@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Login</title>
+    <link rel="icon" href="/../resources/static/img/favicon.ico" type="image/x-icon"/>
+    <link rel="bookmark" href="/../resources/static/img/favicon.ico" type="image/x-icon"/>
+
+
+    <!--用百度的静态资源库的cdn安装bootstrap环境-->
+    <!-- Bootstrap 核心 CSS 文件 -->
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--font-awesome 核心我CSS 文件-->
+    <link href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 在bootstrap.min.js 之前引入 -->
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <!-- Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+    <!--为了保险起见，导入了本地的jquery和fontawesome    -->
+    <!--jquery-->
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+
+    <!--font-awesome    -->
+    <link rel="stylesheet" href="font-awesome-4\7\0\css\font-awesome.min.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="form row">
+        <form class="form-horizontal col-sm-offset-3 col-md-offset-3" th:action="@{/user/login}">
+            <h3 class="form-title" th:text="#{login.tip}"></h3>
+            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+
+            <div class="col-sm-9 col-md-9">
+
+                <div class="form-group">
+                    <!--        用户名图标和用户名输入框            -->
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input class="form-control" type="text" name="username" id="username" th:placeholder="#{login.username}" required autofocus>
+                </div>
+                <!--        密码图标和密码输入框                -->
+                <div class="form-group">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                    <input class="form-control " type="password" name="password" id="password" th:placeholder="#{login.password}" required>
+                </div>
+                <!--        用超链接跳转到注册页面               -->
+                <div class="form-group">
+                    <br>
+                    <a href="register.html" th:text="#{login.remember}"></a>
+                </div>
+                <!--         登录按钮           -->
+                <div class="form-group">
+                    <input type="submit" th:value="#{login.btn}" class="btn btn-success pull-right">
+                </div>
+                <a th:href="@{login(lang='zh_CN')}">中文</a>
+                <a th:href="@{login(lang='en_US')}">英文</a>
+            </div>
+        </form>
+        <br>
+
+    </div>
+</div>
+</body>
+</html>
